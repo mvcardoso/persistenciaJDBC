@@ -61,7 +61,7 @@ public class ClienteDAO extends JdbcDAO<Cliente>  {
 		try {
 			pstm = con.prepareStatement(sql); 
 			pstm.setLong(1, codigo); 
-			rs = pstm.executeQuery(sql);
+			rs = pstm.executeQuery();
 			if(rs.next()) {
 				String nome = rs.getString("nome");
 				Long codigoDB = rs.getLong("codigo");

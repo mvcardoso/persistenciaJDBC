@@ -41,7 +41,7 @@ public class ClienteDAOTest {
 	public void testDelete() {
 		IDAO clienteDAO = new ClienteDAO();
 		List<Cliente> lista = clienteDAO.listarTodos();
-		Cliente cliente = new Cliente("Maria das Couves", lista.get(0).getCodigo()); 
+		Cliente cliente = new Cliente("Maria das Couves", lista.get(lista.size()-1).getCodigo()); 
 		boolean validacao = clienteDAO.deletar(cliente);
 		Assert.assertTrue(validacao);
 	}
