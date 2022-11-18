@@ -13,10 +13,11 @@ public class ClienteDAO extends JdbcDAO<Cliente>  {
 	
 	@Override
 	public Boolean salvar(Cliente cliente) {
-		String sql = "insert into cliente(nome, codigo) values (?,null)";
+		String sql = "insert into cliente(nome, codigo) values (?,?)";
 		try {
 			pstm = con.prepareStatement(sql);
-			pstm.setString(1, cliente.getNome()); //sql injection
+			pstm.setString(1, cliente.getNome());
+			pstm.setLong(2, cliente.getCodigo());//sql injection
 			return pstm.executeUpdate() > 0;
 		} catch (SQLException e) {
 			e.printStackTrace();

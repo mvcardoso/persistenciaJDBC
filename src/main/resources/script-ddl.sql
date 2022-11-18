@@ -1,5 +1,3 @@
-
-
 create database app;
 
 use app;
@@ -9,7 +7,6 @@ create table cliente(
 	nome varchar(80)
 );
 
-select * from cliente;
 
 create table produto(
 	codigo int not null primary key auto_increment,
@@ -28,6 +25,11 @@ create table pedido (
 	foreign key (cliente_cod) references cliente(codigo)
 );
 
+create table fornecedor (
+                            codigo int not null primary key auto_increment,
+                            descricao varchar(120),
+                            telefone varchar(20),
+);
 
 create table itens_pedido (
 	codigo int not null primary key auto_increment,
@@ -37,15 +39,15 @@ create table itens_pedido (
 	foreign key (produto_cod) references produto(codigo)
 );
 
+
 insert into pedido (codigo, data, cliente_cod) values (null, '2022-10-22', 4);
-
-
 insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 1);
 insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 2);
+
+
 insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 3);
 
-
-select p.codigo, p.data, c.nome, pr.descricao, pr.preco from pedido p 
+select p.codigo, p.data, c.nome, pr.descricao, pr.preco from pedido p
 	join cliente c
 	join itens_pedido i
 	join produto pr

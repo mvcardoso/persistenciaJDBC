@@ -11,18 +11,18 @@ import br.edu.infnet.pedido.model.entidade.Cliente;
 public class ClienteDAOTest {
 
 	
-	@Before
-	public void inicializar() {
-		IDAO clienteDAO = new ClienteDAO();
-		Cliente cliente = new Cliente("Jose das Couves"); 
-		clienteDAO.salvar(cliente);
-	}
+//	@Before
+//	public void inicializar() {
+//		IDAO clienteDAO = new ClienteDAO();
+//		Cliente cliente = new Cliente("Jose das Couves", 1l);
+//		clienteDAO.salvar(cliente);
+//	}
 	
 	
 	@Test
 	public void test() {
 		IDAO clienteDAO = new ClienteDAO();
-		Cliente cliente = new Cliente("Jose das Couves"); 
+		Cliente cliente = new Cliente("Jose das Couves", 2l);
 		boolean validacao = clienteDAO.salvar(cliente);
 		Assert.assertTrue(validacao);
 	}
@@ -59,7 +59,7 @@ public class ClienteDAOTest {
 	public void testObterCliente() {
 		IDAO clienteDAO = new ClienteDAO();
 		List<Cliente> lista = clienteDAO.listarTodos();
-		Cliente cliente = clienteDAO.obter(lista.get(0).getCodigo());
+		Object cliente = clienteDAO.obter(lista.get(0).getCodigo());
 		Assert.assertNotNull(cliente);;
 	}
 	
